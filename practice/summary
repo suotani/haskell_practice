@@ -1,0 +1,39 @@
+# キーワード
+* data  独自の代数データ型を作る
+全く新しい型を作る場合に使う
+
+* type  型シノニム いわゆる別名
+型シグネチャを整理して分かりやすくしたいときに使う
+type IntList = [Int]
+type StudentCodeList = [String]
+type String = [Char]
+
+* newtype 既存の型から新しい型を作る　
+既存の型をある型クラスのインスタンスにしたいときに、既存の型をラップして新しい型を作る
+dataと似ているけど、値コンストラクタ・フィールドがそれぞれ１つしかもてないという制約がある
+そのために、dataよりも処理が早い
+newtype CharList = CharList { getCharList :: [Char] }
+[Char]をラップしているだけだが、[Char]とは全く別物の型になる
+++でCharListと[Char]は連結できない
+値コンストラクタが１つだけ、フィールドも１つだけのdata宣言と実用上は同じ
+
+* 型クラスの定義
+class TypeClassName n where
+
+* 型クラスのインスタンスになる
+instance TypeClassName Name where
+
+  
+
+# 型に関する用語
+* 値コンストラクタ
+
+* 型コンストラクタ
+１つの型引数をとって具体型になる
+
+* 型クラス
+共通のインターフェースを提供するもの
+
+* 型
+
+
