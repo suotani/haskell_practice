@@ -23,7 +23,7 @@ class TypeClassName n where
 * 型クラスのインスタンスになる
 instance TypeClassName Name where
 
-  
+
 
 # 型に関する用語
 * 値コンストラクタ
@@ -34,6 +34,25 @@ instance TypeClassName Name where
 * 型クラス
 共通のインターフェースを提供するもの
 
-* 型
+* 型(具体型)
+IntやString
 
 
+* functor 
+(a -> b) -> (f a -> f b)
+
+* applicative
+f (a -> b) -> (f a -> f b)
+
+(*monoid)
+
+*monad
+値を文脈付きの値にする
+[1,2,3]というのは、数を非決定的値としてみる
+m a -> (a -> m b) -> m b
+
+
+# 記法
+
+* let
+* where

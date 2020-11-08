@@ -48,3 +48,4 @@ import Data.Monoid
 -- 下の例では、長さを比較して、同じ長さなら単語同士の辞書順で比較する
 -- lengthCompare :: String -> String -> Ordering
 -- lengthCompare x y = (length x `compare` length y) `mappend` (x `compare` y)
+
