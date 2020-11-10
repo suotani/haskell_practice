@@ -1,4 +1,5 @@
 import Control.Monad
+import Data.List
 --チェスの盤上(8x8)でのナイトの位置
 type KnightPos = (Int, Int)
 
@@ -33,3 +34,13 @@ canReachIn3 start end = end `elem` in3 start end
 
 -- *Main Control.Monad> (6,2) `canReachIn3` (6,1)
 -- True
+
+-- TODO 経路を表示する
+
+--モナディック関数を使ったバージョン
+inMany :: Int -> KnightPos -> [KnightPos]
+inMany x start =
+  return start >>= foldr (<=<) return (replicate x moveKnight)
+
+canReachIn :: Int -> KnightPos -> KnightPos -> Bool
+canReachIn x start end = end `elem` inMany 3 start

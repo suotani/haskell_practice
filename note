@@ -1,0 +1,20 @@
+# ghciで実行
+
+ファイルには関数を定義しておく
+stack ghci
+でghciを起動
+
+:l copy
+
+でファイルの読み込み(copy.hs)の場合
+
+
+# コマンドとして実行
+ファイルには、main = doでメインの処理を書いておく
+
+stack ghc -- --make copy
+
+でビルド
+./copy
+
+で実行

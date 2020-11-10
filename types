@@ -1,0 +1,39 @@
+# IO
+putStrLn :: String -> IO ()
+
+# Writer関連
+tell :: MonadWriter w m => w -> m ()
+writer :: MonadWriter w m => (a, w) -> m a
+runWriter :: Writer w a -> (a, w) -- ログと値を受け取り、値とログのタプルにする
+
+
+# Functor
+class Functor (f :: * -> *) where
+  fmap :: (a -> b) -> f a -> f b
+  (<$) :: a -> f b -> f a
+(<$>) :: Functor f => (a -> b) -> f a -> f b 
+-- <$> は fmapのこと
+-- (+3) <$> Just 3
+
+# Applicative
+class Functor f => Applicative (f :: * -> *) where
+  pure :: a -> f a
+  (<*>) :: f (a -> b) -> f a -> f b
+  GHC.Base.liftA2 :: (a -> b -> c) -> f a -> f b -> f c
+  (*>) :: f a -> f b -> f b
+  (<*) :: f a -> f b -> f a
+
+(<*>) :: Applicative f => f (a -> b) -> f a -> f b
+-- Just (*5) <*> Just 5
+-- (+) <$> Just 6 <*> Just 6
+
+
+# monad関連
+class Applicative m => Monad (m :: * -> *) where
+  -- m a >>= (a -> m b) = m b
+  (>>=) :: m a -> (a -> m b) -> m b
+  (>>) :: m a -> m b -> m b
+  return :: a -> m a
+
+return :: Monad m => a -> m a  -- 値を結果として返す最小の文脈を返す
+mapM_ :: (Foldable t, Monad m) => (a -> m b) -> t a -> m ()
