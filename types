@@ -7,7 +7,7 @@ writer :: MonadWriter w m => (a, w) -> m a
 runWriter :: Writer w a -> (a, w) -- ログと値を受け取り、値とログのタプルにする
 
 
-# Functor
+# Functor ≒ 反復
 class Functor (f :: * -> *) where
   fmap :: (a -> b) -> f a -> f b
   (<$) :: a -> f b -> f a
@@ -15,7 +15,7 @@ class Functor (f :: * -> *) where
 -- <$> は fmapのこと
 -- (+3) <$> Just 3
 
-# Applicative
+# Applicative ≒ 順次
 class Functor f => Applicative (f :: * -> *) where
   pure :: a -> f a
   (<*>) :: f (a -> b) -> f a -> f b
@@ -28,7 +28,7 @@ class Functor f => Applicative (f :: * -> *) where
 -- (+) <$> Just 6 <*> Just 6
 
 
-# monad関連
+# Monad関連 ≒ 分岐
 class Applicative m => Monad (m :: * -> *) where
   -- m a >>= (a -> m b) = m b
   (>>=) :: m a -> (a -> m b) -> m b
@@ -37,3 +37,9 @@ class Applicative m => Monad (m :: * -> *) where
 
 return :: Monad m => a -> m a  -- 値を結果として返す最小の文脈を返す
 mapM_ :: (Foldable t, Monad m) => (a -> m b) -> t a -> m ()
+
+
+Int 固定精度整数 -2^63 ~ 2^63
+Integer 多倍長整数
+Float 単精度不動小数点
+
