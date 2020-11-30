@@ -12,6 +12,13 @@ doubleSmallNumber x = if x > 100
                         then x
                         else x * 2
 
+-- 独自データ型
+data RhType = Pos | Neg
+data ABOType = A | B | AB | O
+data BloodType = BloodType ABOType RhType
+-- patient1BT :: BloodType
+-- patient1BT = BloodType A Pos
+
 -- パターンまっち
 lucky :: Int -> String
 lucky 7 = "Lucky!"

@@ -51,7 +51,7 @@ data Person = Person { firstName :: String
 -- firstName :: Person -> String
 -- height :: Person -> Float
 -- let person = Person {firstName = "name", lastName = "name2"...}全ての値を埋める必要がある
-
+-- person' = person {age = 50} で更新ができる
 
 --型引数を撮るものは型コンストラクタと呼ばれる
 -- data Maybe a = Nothing | Just a
